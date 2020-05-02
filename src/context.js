@@ -15,6 +15,8 @@ export default class RoomProvider extends Component {
 componentDidMount(){
     // this.getData
     let rooms = this.formatData(items);
+    console.log(rooms);
+    
     let featuredRooms = rooms.filter(room => room.featured === true);
     this.setState({
         rooms,
@@ -26,12 +28,13 @@ componentDidMount(){
     
 }
 formatData(item){
-    let temItems = items.map(item =>{
+    let tempItems = items.map(item =>{
 let id = item.sys.id
 let images = item.fields.images.map(image => image.fields.file.url);
- let room = { ...item.fields, images, id};
+ let room = { ...item.fields,images,id};
  return room;
-    })
+    });
+    return tempItems
 }
 
      
