@@ -480,7 +480,7 @@ export default [
       name: "family economy",
       slug: "family-economy",
       type: "family",
-      price: 300,
+      price: 3000000,
       size: 500,
       capacity: 4,
       pets: false,
