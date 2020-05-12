@@ -3,6 +3,7 @@ import items from "./data";
 import Client from './Contentful';
 
 
+
 const RoomContext = React.createContext();
 
 export default class RoomProvider extends Component {
@@ -22,7 +23,17 @@ export default class RoomProvider extends Component {
     breakfast: false,
     pets: false
   };
-
+// getData
+getData = async () =>{
+  try {
+let response = await Client.getEntries({
+  content_type:"lodjiGandrung"
+});
+  } catch (error){
+    console.log(error);
+    
+  }
+}
   // getData = async () => {
   //   try {
   //     let response = await Client.getEntries({
@@ -67,7 +78,6 @@ let response = await Client.getEntries({
     // this.getData();
     let rooms = this.formatData(items);
     let featuredRooms = rooms.filter(room => room.featured === true);
-    //
     let maxPrice = Math.max(...rooms.map(item => item.price));
     let maxSize = Math.max(...rooms.map(item => item.size));
     this.setState({
@@ -75,7 +85,6 @@ let response = await Client.getEntries({
       featuredRooms,
       sortedRooms: rooms,
       loading: false,
-      //
       price: maxPrice,
       maxPrice,
       maxSize
